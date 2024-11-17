@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './button'
 
-const Card = ({ link, title, desc, onClick, buttonClass }) => {
+const Card = ({ link, title, desc, onClick, buttonClass, author }) => {
     return (
         <>
 
@@ -10,7 +10,8 @@ const Card = ({ link, title, desc, onClick, buttonClass }) => {
                 <img src={link} alt="Book Image" className='w-full h-full rounded-xl' />
             </div>
             <div className='py-4'>
-                <p className='text-xl font-medium'>{title}</p>
+                <p className='text-xl font-bold'>{title}</p>
+                <p className='text-sm mb-2 font-light'>by {author}</p>
                 <p className='text-lg font-normal h-14'>{desc.slice(0, 60)}{desc.length > 60 ? "..." : ""}</p>
                 <div className='mt-4'>
 

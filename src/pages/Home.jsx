@@ -75,6 +75,7 @@ const Home = () => {
                                 <Card
                                     link={`${i?.image}`}
                                     title={i?.title}
+                                    author={i?.author}
                                     desc={i?.description}
                                     onClick={() => {
                                         navigate(`/details/${i?.id}`)

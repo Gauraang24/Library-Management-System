@@ -36,7 +36,7 @@ const BrowseBook = () => {
             setBookList(books);
         } else {
             const data = bookList.filter(i => {
-                return i.title.toLowerCase().includes(searchValue)
+                return i.title.toLowerCase().includes(searchValue) || i.author.toLowerCase().includes(searchValue)
             })
             setBookList(data)
         }
@@ -81,6 +81,7 @@ const BrowseBook = () => {
 
                 <div className="flex flex-wrap gap-4 mb-8 mt-14">
                     {bookList.map((i) => {
+                        console.log("oiii", i)
                         return (
                             <div
                                 key={i.id}
@@ -89,6 +90,7 @@ const BrowseBook = () => {
                                 <Card
                                     link={i?.image}
                                     title={i?.title}
+                                    author={i?.author}
                                     desc={i?.description}
                                     buttonClass={
                                         "!bg-white !text-[#636ae8] border border-[#636ae8]"

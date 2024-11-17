@@ -28,16 +28,12 @@ Make sure you have the following installed:
 ### Installation
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/your-username/online-library-system.git
    cd online-library-system
    ```
-
 2. npm install
-
 3. npm start
-
 4. Open the app in your browser at http://localhost:3000
 
 ### Folder Structure

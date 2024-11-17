@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addBook } from "../store/BookSlice";
+import { useNavigate } from "react-router-dom";
 // import { addBook } from "../redux/BookSlice";
 
 const AddBook = () => {
@@ -15,12 +16,14 @@ const AddBook = () => {
     } = useForm();
 
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const onSubmit = (data) => {
         const uniqueId = Date.now();
         const newBook = { ...data, id: uniqueId };
         dispatch(addBook(newBook));
         alert("Book added successfully!");
+        navigate(`/browse/${data.category}`)
         reset();
     };
 

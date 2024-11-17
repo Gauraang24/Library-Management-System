@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/button';
-import { popularBooks } from '../data/homepage';
 import Card from '../components/card';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
+    const books = useSelector((state) => {
+        return state.books
+    })
+
     const navigate = useNavigate()
+    const [popularBooks, setPopularBooks] = useState([])
+
+    useEffect(() => {
+        const pB = books.filter(i => {
+            return i.rating > 4.8
+        })
+
+        setPopularBooks(pB)
+    }, [])
     return (
         <section className=''>
             {/* //Banner */}
@@ -46,14 +59,14 @@ const Home = () => {
             <div>
                 <p className='header-mid'>Out Most Popular Books Now</p>
 
-                <div className='flex flex-wrap justify-evenly mb-8'>
+                <div className='flex flex-wrap gap-4 mb-8 mt-14 px-10'>
                     {
                         popularBooks.map(i => {
-                            return <div key={i.key} className=' w-[350px] border border-gray-400 rounded-xl overflow-hidden '>
+                            return <div key={i.id} className=' w-[350px]  rounded-xl overflow-hidden mb-4'>
                                 <Card
-                                    link={`/images/${i?.imglink}`}
+                                    link={`${i?.image}`}
                                     title={i?.title}
-                                    desc={i?.desc}
+                                    desc={i?.description}
                                     onClick={() => {
                                         console.log("CLICKED!!")
                                     }} />

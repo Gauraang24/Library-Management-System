@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { menuList } from "../data/browseBook";
-import { books } from "../data/booksData";
 import Card from "../components/card";
 import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BrowseBook = () => {
     const [bookList, setBookList] = useState([]);
     const [searchValue, setSearchValue] = useState("")
-
+    const books = useSelector((state) => {
+        return state.books
+    })
     const param = useParams();
     const navigate = useNavigate();
 

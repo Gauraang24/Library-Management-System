@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/button';
 import { popularBooks } from '../data/homepage';
+import Card from '../components/card';
 
 const Home = () => {
     const navigate = useNavigate()
@@ -48,19 +49,14 @@ const Home = () => {
                 <div className='flex flex-wrap justify-evenly mb-8'>
                     {
                         popularBooks.map(i => {
-                            return <div key={i.key} className=' w-[350px] border border-gray-400 rounded-xl overflow-hidden'>
-                                <div className=' w-full aspect-[9/12]  '>
-
-                                    <img src={`/images/${i?.imglink}`} alt="Book Image" className='w-full h-full' />
-                                </div>
-                                <div className='p-4'>
-                                    <p className='text-xl font-medium'>{i?.title}</p>
-                                    <p className='text-lg font-normal h-14'>{i?.desc.slice(0, 60)}...</p>
-                                    <div className='mt-4'>
-
-                                        <Button className={'w-full'} title={"View Detail"} />
-                                    </div>
-                                </div>
+                            return <div key={i.key} className=' w-[350px] border border-gray-400 rounded-xl overflow-hidden '>
+                                <Card
+                                    link={`/images/${i?.imglink}`}
+                                    title={i?.title}
+                                    desc={i?.desc}
+                                    onClick={() => {
+                                        console.log("CLICKED!!")
+                                    }} />
                             </div>
                         })
                     }

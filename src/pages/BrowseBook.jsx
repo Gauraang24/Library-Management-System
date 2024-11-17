@@ -91,7 +91,7 @@ const BrowseBook = () => {
                                     title={i?.title}
                                     desc={i?.description}
                                     buttonClass={
-                                        "!bg-white text-[#636ae8] border border-[#636ae8]"
+                                        "!bg-white !text-[#636ae8] border border-[#636ae8]"
                                     }
                                     onClick={() => {
                                         console.log("CLICKED!!");

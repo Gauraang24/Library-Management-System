@@ -5,12 +5,11 @@ import Card from '../components/card';
 import { useSelector } from 'react-redux';
 
 const Home = () => {
+    const [popularBooks, setPopularBooks] = useState([])
     const books = useSelector((state) => {
         return state.books
     })
-
     const navigate = useNavigate()
-    const [popularBooks, setPopularBooks] = useState([])
 
     useEffect(() => {
         const pB = books.filter(i => {
@@ -32,7 +31,7 @@ const Home = () => {
                     <p className='text-[#d4cfcf] text-xl  font-medium '>Discover a world of stories and knowlwdge to inspire your mind.</p>
 
                     <Button title={"Browse"} onClick={() => {
-                        navigate("/browse")
+                        navigate("/browse/all")
                     }} />
                 </div>
             </div>
@@ -45,11 +44,21 @@ const Home = () => {
 
                 <div className=''>
                     <ul className='flex justify-center gap-4 '>
-                        <li className=' px-4 py-1 rounded-md bg-[#636ae8] text-white font-medium'>Fiction</li>
-                        <li className=' px-4 py-1 rounded-md bg-[#e8618c] text-white font-medium'>Non-Fiction</li>
-                        <li className=' px-4 py-1 rounded-md bg-[#22ccb2] text-white font-medium'>Sci-Fi</li>
-                        <li className=' px-4 py-1 rounded-md bg-[#7F55E0] text-white font-medium'>Romance</li>
-                        <li className=' px-4 py-1 rounded-md bg-[#EA916E] text-white font-medium'>Anime</li>
+                        <li className=' px-4 py-1 rounded-md bg-[#636ae8] text-white font-medium cursor-pointer' onClick={() => {
+                            navigate("/browse/Fiction")
+                        }}>Fiction</li>
+                        <li className=' px-4 py-1 rounded-md bg-[#e8618c] text-white font-medium cursor-pointer' onClick={() => {
+                            navigate("/browse/Non-Fiction")
+                        }}>Non-Fiction</li>
+                        <li className=' px-4 py-1 rounded-md bg-[#22ccb2] text-white font-medium cursor-pointer' onClick={() => {
+                            navigate("/browse/Sci-Fi")
+                        }}>Sci-Fi</li>
+                        <li className=' px-4 py-1 rounded-md bg-[#7F55E0] text-white font-medium cursor-pointer' onClick={() => {
+                            navigate("/browse/Romance")
+                        }}>Romance</li>
+                        <li className=' px-4 py-1 rounded-md bg-[#EA916E] text-white font-medium cursor-pointer' onClick={() => {
+                            navigate("/browse/Anime")
+                        }}>Anime</li>
                     </ul>
                 </div>
             </div>
@@ -68,7 +77,7 @@ const Home = () => {
                                     title={i?.title}
                                     desc={i?.description}
                                     onClick={() => {
-                                        console.log("CLICKED!!")
+                                        navigate(`/details/${i?.id}`)
                                     }} />
                             </div>
                         })

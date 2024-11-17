@@ -94,7 +94,7 @@ const BrowseBook = () => {
                                         "!bg-white !text-[#636ae8] border border-[#636ae8]"
                                     }
                                     onClick={() => {
-                                        console.log("CLICKED!!");
+                                        navigate(`/details/${i?.id}`)
                                     }}
                                 />
                             </div>
